@@ -1,4 +1,5 @@
 const express = require("express");
+const crypto = require("crypto");
 const app = express();
 const port = 3000;
 let map = {};
@@ -10,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  let key = req.body.key;
+  let key = crypto.randomUUID();
   let time = new Date();
   map[key] = time;
   res.send({
