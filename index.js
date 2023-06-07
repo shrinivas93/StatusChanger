@@ -1,10 +1,13 @@
 const express = require("express");
 const crypto = require("crypto");
+const cors = require("cors");
 const app = express();
 const port = 3000;
 let map = {};
 
 app.use(express.json());
+
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send(Object.keys(map).map((key) => ({ key, value: map[key] })));
