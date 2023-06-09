@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send(Object.keys(map).map((key) => ({ key, value: map[key] })));
+  res.send(Object.keys(map).map((key) => ({ key, value: map[key], status: getStatus(value) })));
 });
 
 app.post("/", (req, res) => {
